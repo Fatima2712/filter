@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCmLASjC" crossorigin="anonymous">
+    <title>Filter And Search</title>
+</head>
+<body>
+    <div class="container my-5">
+       <div class="my-5">
+     <input onkeyup="searchFilter()" type="text" name="search" id="input" placeholder="Search Here" class="form-control">
+       </div>
+
+        <table id="table" class="table" table-bordered>
+            <thead>
+           <tr>
+            <th>Name</th>
+            <th>F Name</th>
+            <th>Email</th>
+           </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>fatima</td>
+                <td>zia ul haq</td>
+                <td>fatima@aptechgdn.net</td>
+            </tr>
+            <tr>
+                <td>bhagia</td>
+                <td>manhar</td>
+                <td>bhagia@aptechgdn.net</td>
+            </tr>
+            <tr>
+                <td>erum</td>
+                <td>shuja</td>
+                <td>erum@aptechgdn.net</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        function searchFilter(){
+            var inputval = document.getElementById("input").value.toUpperCase();
+            //console.log(inputval)
+
+            var table = document.getElementById("table");
+            //console.log(table)
+
+            var tr = document.getElementsByTagName("tr");
+            //console.log(tr)
+
+            for(var i=0; i<tr.length; i++){
+                var td = tr[i].getElementsByTagName("td")[0];
+                //console.log(td)
+
+                if(td) {
+                    var tdval = td.innerHTML.toUpperCase() || td.innerText.toUpperCase();
+                    //console.log(tdval)
+                    if(tdval.indexOf(inputval)>-1){
+                        //console.log(tdval.indexOf(inputval));
+                        tr[i].style.display = "";
+                    }
+
+                    else{
+                        tr[i].style.display = "none";
+                    }
+
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>
